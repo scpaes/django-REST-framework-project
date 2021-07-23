@@ -1,3 +1,4 @@
+from alunos.views.listview import ListaAlunosMatriculados, ListaMatriculasAluno
 from django.contrib import admin
 from django.urls import path, include
 
@@ -13,4 +14,6 @@ router.register('matriculas', MatriculaViewSet, basename='matricula')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('aluno/<int:pk>/matriculas/', ListaMatriculasAluno.as_view(), name='lista-matricula-aluno'),
+    path('curso/<int:pk>/alunos/', ListaAlunosMatriculados.as_view(), name='lista-alunos-matriculados'),
 ]
